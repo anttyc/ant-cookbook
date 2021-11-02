@@ -32,14 +32,6 @@ module.exports = {
         },
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
-        // {
-        //     resolve: `gatsby-source-flotiq`,
-        //     options: {
-        //         authToken: process.env.GATSBY_FLOTIQ_API_KEY,
-        //         forceReload: false, //(optional)
-        //         includeTypes: [`recipe`,`_media`],
-        //     },
-        // },
         {
             resolve: "gatsby-source-airtable",
             options: {
