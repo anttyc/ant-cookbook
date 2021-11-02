@@ -19,9 +19,8 @@ const DefaultLayout = ({ children, bodyClass, isHome }) => {
 
     const site = {
         "title": 'Bon Apetit!',
-        'subtitle': 'Recipes with Flotiq',
-        'twitterUrl': 'https://twitter.com/flotiq',
-        'facebookUrl': 'https://www.facebook.com/Flotiq-104200727751200/',
+        'subtitle': 'Botopher Recipes',
+        'twitterUrl': 'https://twitter.com/anttyc',
         'siteUrl': ''
     }
 

@@ -5,29 +5,47 @@ import CookingTime from "../../images/clock-regular.svg"
 import Servings from "../../images/user-solid.svg"
 
 const PostCard = ({ post }) => {
-    const url = `/${post.slug}/`
+    const url = `/${post.data.slug}/`
 
     return (
         <Link to={url} className="post-card">
             <header className="post-card-header">
-                {post.image && post.image[0] ?
-                    <div className="post-card-image" style={{
-                        backgroundImage: `url(https://api.flotiq.com/image/260x0/${post.image[0].id}.${post.image[0].extension})` ,
-                    }}/> : <div className="post-card-image" />}
-                <h2 className="post-card-title">{post.name}</h2>
+                {((post.data.Cover_Image || [])[0] || {}).url ? (
+                    <div
+                        className="post-card-image"
+                        style={{
+                            backgroundImage: `url(${post.data.Cover_Image[0].url})`,
+                        }}
+                    />
+                ) : (
+                    <div className="post-card-image" />
+                )}
+                <h2 className="post-card-title">{post.data.Name}</h2>
             </header>
             <section className="post-card-tags">
-                <div><img className="post-card-tag-icon" alt="Servings" src={Servings}/> {post.servings}</div>
-                <div><img className="post-card-tag-icon" alt="Cooking time" src={CookingTime}/> {post.cookingTime} </div>
+                <div>
+                    <img
+                        className="post-card-tag-icon"
+                        alt="Servings"
+                        src={Servings}
+                    />{" "}
+                    {post.data.Servings}
+                </div>
+                <div>
+                    <img
+                        className="post-card-tag-icon"
+                        alt="Cooking time"
+                        src={CookingTime}
+                    />{" "}
+                    {post.data.Total_Time/60}{" "}
+                </div>
             </section>
             <footer className="post-card-footer">
-                <div className="post-card-footer-left">
-                </div>
-                <div className="post-card-footer-right">
-                </div>
+                <div className="post-card-footer-left"></div>
+                <div className="post-card-footer-right"></div>
             </footer>
         </Link>
-    )
+    );
 }
 
 PostCard.propTypes = {

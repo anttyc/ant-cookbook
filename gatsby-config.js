@@ -32,12 +32,39 @@ module.exports = {
         },
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
+        // {
+        //     resolve: `gatsby-source-flotiq`,
+        //     options: {
+        //         authToken: process.env.GATSBY_FLOTIQ_API_KEY,
+        //         forceReload: false, //(optional)
+        //         includeTypes: [`recipe`,`_media`],
+        //     },
+        // },
         {
-            resolve: `gatsby-source-flotiq`,
+            resolve: "gatsby-source-airtable",
             options: {
-                authToken: process.env.GATSBY_FLOTIQ_API_KEY,
-                forceReload: false, //(optional)
-                includeTypes: [`recipe`,`_media`],
+                apiKey: process.env.AIRTABLE_API_KEY,
+                tables: [
+                    {
+                        baseId: process.env.AIRTABLE_BASE_ID,
+                        tableName: "Ingredients",
+                    },
+                    {
+                        baseId: process.env.AIRTABLE_BASE_ID,
+                        tableName: "Recipe Ingredient",
+                        tableLinks: ["Ingredient"],
+                    },
+                    {
+                        baseId: process.env.AIRTABLE_BASE_ID,
+                        tableName: "Recipe Step",
+                    },
+                    {
+                        baseId: process.env.AIRTABLE_BASE_ID,
+                        tableName: "Recipes",
+                        tableView: "Cookbook",
+                        tableLinks: ["Ingredients", "Steps"],
+                    },
+                ],
             },
         },
         /**
@@ -48,4 +75,4 @@ module.exports = {
         `gatsby-plugin-force-trailing-slashes`,
         `gatsby-plugin-offline`,
     ],
-}
+};

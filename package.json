@@ -52,6 +52,7 @@
     "gatsby-plugin-offline": "3.0.35",
     "gatsby-plugin-react-helmet": "3.1.22",
     "gatsby-plugin-sharp": "^2.10.1",
+    "gatsby-source-airtable": "^2.2.1",
     "gatsby-source-filesystem": "2.1.48",
     "gatsby-source-flotiq": "^2.2.3",
     "gatsby-source-ghost": "4.0.4",
@@ -59,6 +60,8 @@
     "lodash": "^4.17.20",
     "react": "16.13.0",
     "react-dom": "16.13.0",
-    "react-helmet": "5.2.1"
+    "react-helmet": "5.2.1",
+    "remark-html": "^15.0.0",
+    "unified": "^10.1.0"
   }
 }

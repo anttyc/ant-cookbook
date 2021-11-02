@@ -11,16 +11,17 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const result = await graphql(`
         {
-            allRecipe(sort: {fields: flotiqInternal___createdAt, order: DESC}) {
+            allAirtable {
                 edges {
                     node {
-                        id
-                        slug
+                        data {
+                            slug
+                        }
                     }
                 }
             }
         }
-    `)
+    `);
 
     // Check for any errors
     if (result.errors) {
@@ -28,7 +29,8 @@ exports.createPages = async ({ graphql, actions }) => {
     }
 
     // Extract query results
-    const posts = result.data.allRecipe.edges
+    const posts = result.data.allAirtable.edges;
+
 
     // Load templates
     const indexTemplate = path.resolve(`./src/templates/index.js`)
@@ -38,15 +40,15 @@ exports.createPages = async ({ graphql, actions }) => {
     posts.forEach(({ node }) => {
         // This part here defines, that our posts will use
         // a `/:slug/` permalink.
-        node.url = `/${node.slug}/`
+        node.url = `/${node.data.slug}/`
 
         createPage({
             path: node.url,
             component: postTemplate,
             context: {
-                slug: node.slug,
+                slug: node.data.slug,
             },
-        })
+        });
     })
 
     // Create pagination
