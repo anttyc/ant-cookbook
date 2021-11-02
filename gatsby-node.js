@@ -11,7 +11,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const result = await graphql(`
         {
-            allAirtable {
+            allAirtable(filter: { table: { eq: "Recipes" } }) {
                 edges {
                     node {
                         data {

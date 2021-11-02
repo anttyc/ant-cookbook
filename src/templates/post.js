@@ -11,9 +11,6 @@ import { Layout } from "../components/common";
  *
  */
 const Post = ({ data }) => {
-    console.log({
-        data,
-    });
     const post = data.airtable;
 
     return (
